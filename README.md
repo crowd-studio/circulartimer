@@ -79,6 +79,12 @@ Returns the interval between the `initialDate` and the `finalDate`.
 ```
 Returns the interval of time elapsed since the CircleTimer started running.
 
+## Demo
+
+You can find a demo project in this repository. Meanwhile, you can watch a teaser:
+
+[https://vimeo.com/57868337](https://vimeo.com/57868337)
+
 ## About us
 ===
 
@@ -89,10 +95,6 @@ Returns the interval of time elapsed since the CircleTimer started running.
 [http://crowd-studio.com/](http://crowd-studio.com/)
 
 [http://facebook.com/thisiscrowd](http://facebook.com/thisiscrowd)
-
-Coded by
-
-[@bernatbombi](http://twitter.com/bernatbombi)
 
 ## Licence
 ===

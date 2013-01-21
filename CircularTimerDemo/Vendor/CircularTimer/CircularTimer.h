@@ -1,8 +1,6 @@
 //
 //  CircularTimer.h
-//  OFFF
 //
-//  Created by Bernat Bombi Fernandez on 20/01/13.
 //  Copyright (c) 2013 Crowd Studio. All rights reserved.
 //
 
