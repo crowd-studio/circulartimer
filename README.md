@@ -52,7 +52,7 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
 
 You can see the meaning of `radius`, `internalRadius`, `circleStrokeColor` and `activeCircleStrokeColor` in this image:
 
-![image](https://github.com/crowd-studio/circulartimer/blob/master/assets/circleinfo.png)
+![image](https://github.com/crowd-studio/circulartimer/blob/master/Assets/circleinfo.png?raw=true)
 
 ```
 - (BOOL)isRunning;
