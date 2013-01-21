@@ -36,7 +36,7 @@ self.circularTimer =
 ## Methods
 ===
 
-Create a CircleTimer using:
+Create a CircularTimer using:
 
 ```
 - (id)initWithPosition:(CGPoint)position
@@ -57,17 +57,17 @@ You can see the meaning of `radius`, `internalRadius`, `circleStrokeColor` and `
 ```
 - (BOOL)isRunning;
 ```
-Indicates if the CircleTimer is currently running.
+Indicates if the CircularTimer is currently running.
 
 ```
 - (BOOL)willRun;
 ```
-Indicates if the CircleTimer will run (in other words, if the current time is smaller than the CircleTimer `finalDate`).
+Indicates if the CircularTimer will run (in other words, if the current time is smaller than the CircularTimer `finalDate`).
 
 ```
 - (void)stop;
 ```
-Stops the CircleTimer.
+Stops the CircularTimer.
 
 ```
 - (NSTimeInterval)intervalLength;
@@ -77,7 +77,7 @@ Returns the interval between the `initialDate` and the `finalDate`.
 ```
 - (NSTimeInterval)runningElapsedTime;
 ```
-Returns the interval of time elapsed since the CircleTimer started running.
+Returns the interval of time elapsed since the CircularTimer started running.
 
 ## Demo
 
