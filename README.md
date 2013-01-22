@@ -33,6 +33,12 @@ self.circularTimer =
                             }];
 ```                              
 
+and add it as subview
+
+```
+[self.view addSubview:self.circularTimer];
+```
+
 ## Methods
 ===
 
