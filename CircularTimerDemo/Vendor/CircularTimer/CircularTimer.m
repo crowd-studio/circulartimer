@@ -6,7 +6,6 @@
 
 #import "CircularTimer.h"
 
-typedef void(^CircularTimerBlock)(void);
 
 @interface CircularTimer ()
 

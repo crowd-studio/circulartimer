@@ -6,6 +6,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^CircularTimerBlock)(void);
+
 @interface CircularTimer : UIView
 
 - (id)initWithPosition:(CGPoint)position
