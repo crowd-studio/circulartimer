@@ -20,8 +20,23 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
 
 - (BOOL)isRunning;
 - (BOOL)willRun;
+- (void)setup;
 - (void)stop;
 - (NSTimeInterval)intervalLength;
 - (NSTimeInterval)runningElapsedTime;
+
+
+@property float radius;
+@property float interalRadius;
+@property (nonatomic, strong) UIColor *circleStrokeColor;
+@property (nonatomic, strong) UIColor *activeCircleStrokeColor;
+@property (nonatomic, strong) NSDate *initialDate;
+@property (nonatomic, strong) NSDate *finalDate;
+@property (nonatomic, copy) CircularTimerBlock startBlock;
+@property (nonatomic, copy) CircularTimerBlock endBlock;
+@property (nonatomic, strong) NSTimer *timer;
+@property float percentageCompleted;
+@property BOOL running;
+
 
 @end
