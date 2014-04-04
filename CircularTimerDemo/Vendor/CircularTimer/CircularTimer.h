@@ -11,14 +11,14 @@ typedef void(^CircularTimerBlock)(void);
 @interface CircularTimer : UIView
 
 - (id)initWithPosition:(CGPoint)position
-                radius:(float)radius
+           outerRadius:(float)outerRadius
         internalRadius:(float)internalRadius
-     circleStrokeColor:(UIColor *)circleStrokeColor
+      circleStrokeColor:(UIColor *)circleStrokeColor
 activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
-           initialDate:(NSDate *)initialDate
-             finalDate:(NSDate *)finalDate
-         startCallback:(void (^)(void))startBlock
-           endCallback:(void (^)(void))endBlock;
+            initialDate:(NSDate *)initialDate
+              finalDate:(NSDate *)finalDate
+          startCallback:(void (^)(void))startBlock
+            endCallback:(void (^)(void))endBlock;
 
 - (BOOL)isRunning;
 - (BOOL)willRun;
@@ -28,9 +28,7 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
 - (NSTimeInterval)runningElapsedTime;
 
 
-@property float radius;
-@property float interalRadius;
-@property (nonatomic, strong) UIColor *circleStrokeColor;
+@property (nonatomic, strong) UIColor * inactiveCircleStrokeColor;
 @property (nonatomic, strong) UIColor *activeCircleStrokeColor;
 @property (nonatomic, strong) NSDate *initialDate;
 @property (nonatomic, strong) NSDate *finalDate;
@@ -39,6 +37,11 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
 @property (nonatomic, strong) NSTimer *timer;
 @property float percentageCompleted;
 @property BOOL running;
+
+@property (nonatomic) float radius;
+
+@property (nonatomic) float activeCircleStrokeWidth;
+@property (nonatomic) float inactiveCircleStrokeWidth;
 
 
 @end
