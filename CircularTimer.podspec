@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
       LICENSE
   }
 
-  s.source       = { :git => "https://github.com/crowd-studio/circulartimer.git" }
+  s.source       = { :git => "https://github.com/tkach/circulartimer.git" }
   s.source_files = 'CircularTimerDemo/Vendor/CircularTimer/*.{h,m}'
 
   s.platform     = :ios, '5.0'
