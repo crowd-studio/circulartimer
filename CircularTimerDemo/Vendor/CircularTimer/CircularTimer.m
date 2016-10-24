@@ -6,21 +6,8 @@
 
 #import "CircularTimer.h"
 
-typedef void(^CircularTimerBlock)(void);
 
 @interface CircularTimer ()
-
-@property float radius;
-@property float interalRadius;
-@property (nonatomic, strong) UIColor *circleStrokeColor;
-@property (nonatomic, strong) UIColor *activeCircleStrokeColor;
-@property (nonatomic, strong) NSDate *initialDate;
-@property (nonatomic, strong) NSDate *finalDate;
-@property (nonatomic, copy) CircularTimerBlock startBlock;
-@property (nonatomic, copy) CircularTimerBlock endBlock;
-@property (nonatomic, strong) NSTimer *timer;
-@property float percentageCompleted;
-@property BOOL running;
 
 @end
 
@@ -29,21 +16,23 @@ typedef void(^CircularTimerBlock)(void);
 #define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
 
 - (id)initWithPosition:(CGPoint)position
-                radius:(float)radius
+           outerRadius:(float)outerRadius
         internalRadius:(float)internalRadius
-     circleStrokeColor:(UIColor *)circleStrokeColor
+      circleStrokeColor:(UIColor *)circleStrokeColor
 activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
-           initialDate:(NSDate *)initialDate
-             finalDate:(NSDate *)finalDate
-         startCallback:(void (^)(void))startBlock
-           endCallback:(void (^)(void))endBlock
+            initialDate:(NSDate *)initialDate
+              finalDate:(NSDate *)finalDate
+          startCallback:(void (^)(void))startBlock
+            endCallback:(void (^)(void))endBlock
 {
     
-    self = [super initWithFrame:CGRectMake(position.x, position.y, radius * 2, radius * 2)];
+    self = [super initWithFrame:CGRectMake(position.x, position.y, outerRadius * 2, outerRadius * 2)];
     if (self) {
-        self.radius = radius;
-        self.interalRadius = internalRadius;
-        self.circleStrokeColor = circleStrokeColor;
+        self.radius = internalRadius + (outerRadius - internalRadius) / 2;
+        self.activeCircleStrokeWidth = outerRadius - internalRadius;
+        self.inactiveCircleStrokeWidth = self.activeCircleStrokeWidth;
+
+        self.inactiveCircleStrokeColor = circleStrokeColor;
         self.activeCircleStrokeColor = activeCircleStrokeColor;
         self.initialDate = initialDate;
         self.finalDate = finalDate;
@@ -53,6 +42,14 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
     }
     return self;
 }
+
+
+#pragma mark - Post init
+
+
+
+#pragma mark - Setup
+
 
 - (void)setup
 {    
@@ -81,17 +78,15 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
 {
     //General circle info
     CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
-    float strokeWidth = self.radius - self.interalRadius;
-    float radius = self.interalRadius + strokeWidth / 2;
-    
+
     //Background circle
     UIBezierPath *circle1 = [UIBezierPath bezierPathWithArcCenter:center
-                                                           radius:radius
+                                                           radius:self.radius
                                                        startAngle:DEGREES_TO_RADIANS(0.0f)
                                                          endAngle:DEGREES_TO_RADIANS(360.0f)
                                                         clockwise:YES];
-    [self.circleStrokeColor setStroke];
-    circle1.lineWidth = strokeWidth;
+    [self.inactiveCircleStrokeColor setStroke];
+    circle1.lineWidth = self.inactiveCircleStrokeWidth;
     [circle1 stroke];
     
     //Active circle
@@ -106,12 +101,12 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
     }
     
     UIBezierPath *circle2 = [UIBezierPath bezierPathWithArcCenter:center
-                                                           radius:radius
+                                                           radius:self.radius
                                                        startAngle:DEGREES_TO_RADIANS(startAngle)
                                                          endAngle:DEGREES_TO_RADIANS(degrees)
                                                         clockwise:YES];
     [self.activeCircleStrokeColor setStroke];
-    circle2.lineWidth = strokeWidth;
+    circle2.lineWidth = self.activeCircleStrokeWidth;
     [circle2 stroke];
     
 }

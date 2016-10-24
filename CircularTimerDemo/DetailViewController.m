@@ -39,7 +39,7 @@
 - (void)createCircle
 {
     self.circularTimer = [[CircularTimer alloc] initWithPosition:CGPointMake(10.0f, 10.0f)
-                                                          radius:self.radius
+                                                     outerRadius:self.radius
                                                   internalRadius:self.internalRadius
                                                circleStrokeColor:self.circleStrokeColor
                                          activeCircleStrokeColor:self.activeCircleStrokeColor
